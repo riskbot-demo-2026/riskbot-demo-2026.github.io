@@ -1,0 +1,381 @@
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light only">
+<meta name="supported-color-schemes" content="light">
+<!--[if mso]><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->
+<style>
+  :root { color-scheme: light only; }
+  @media (prefers-color-scheme: dark) {
+    body, table, td, th, p, span, a, div { color-scheme: light only !important; }
+    .header-td  { background: #3b5491 !important; }
+    .card-bg    { background: #ffffff !important; color: #1e293b !important; }
+    .action-td  { background: #ffffff !important; }
+    .care-td    { background: #f8fafc !important; }
+    .ref-bg     { background: #f8fbff !important; }
+    a           { color: #4a6099 !important; }
+  }
+  @media only screen and (max-width: 600px) {
+    .outer { padding: 0 !important; }
+    .main { width: 100% !important; max-width: 100% !important; }
+    .header-td { padding: 16px 16px !important; }
+    .card-td { padding: 10px 12px !important; }
+    .summary-td { padding: 12px 12px !important; }
+    .rows-td { padding: 0 0 12px 0 !important; }
+    .footer-td { padding: 12px 12px !important; }
+    .title-link { font-size: 14px !important; line-height: 1.5 !important; }
+    .caution-title { font-size: 13px !important; }
+    .desc-p { font-size: 12px !important; }
+    .action-p { font-size: 13px !important; }
+    .dash-num { font-size: 20px !important; }
+    .grade-header-right { font-size: 10px !important; white-space: normal !important; word-break: keep-all !important; }
+    .ref-date { display: none !important; }
+    .card-inner { padding: 10px 12px !important; }
+    .action-inner { padding: 8px 12px !important; }
+    .care-inner { padding: 8px 12px !important; }
+    .badge-wrap { word-break: keep-all !important; }
+    .badge-wrap span { white-space: nowrap !important; display: inline-block !important; margin-bottom: 4px !important; }
+    .score-num { font-size: 12px !important; }
+    /* 여신잔고 표 모바일 최적화 */
+    .price-alert-td { font-size: 11px !important; padding: 7px 4px !important; white-space: normal !important; }
+    .price-alert-wrap { overflow-x: auto !important; -webkit-overflow-scrolling: touch !important; }
+    .price-alert-table th { font-size: 10px !important; padding: 6px 3px !important; white-space: normal !important; word-break: keep-all !important; }
+    .price-alert-table td { font-size: 11px !important; padding: 7px 3px !important; white-space: normal !important; word-break: keep-all !important; }
+    .loan-hdr-right { display: none !important; }
+    /* 보유 익스포저 카드 모바일 대응 — 고정폭(100+205+205=510px) 컬럼이
+       375px 이하 화면에서 가로 스크롤을 유발하던 문제(Playwright 실측 48px 초과 확인).
+       정렬 정확도를 위해 데스크톱은 고정 px를 유지하되, 모바일에서만 CSS width로
+       재정의(HTML width 속성보다 우선순위 높음)해 축소 */
+    .exp-card-td { padding: 10px 12px !important; }
+    .exp-name-td { width: 58px !important; font-size: 11px !important; padding-right: 4px !important; }
+    .exp-val-td { width: 68px !important; font-size: 10px !important; padding: 6px 3px !important; white-space: normal !important; word-break: keep-all !important; }
+  }
+</style>
+</head>
+<body style="margin:0;padding:0;background:#f1f5f9;color-scheme:light only;font-family:'Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f1f5f9;">
+<tr><td align="center" class="outer" style="padding:0;">
+<table width="100%" cellpadding="0" cellspacing="0" border="0" style="max-width:640px;"><tr><td style="background:#0f172a;color:#e2e8f0;font-size:11px;padding:8px 22px;letter-spacing:0.2px;font-family:'Apple SD Gothic Neo','Malgun Gothic',Arial,sans-serif;">📌 시연용 화면 — 표시된 기사·수치는 가상 데이터입니다. 실제 운영에서는 당사 보유 데이터를 종목 단위 집계데이터로 가공해 사용합니다.</td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0" class="main" style="max-width:640px;width:100%;background:#ffffff;border:1px solid #e2e8f0;">
+
+  <!-- 헤더 H-3 -->
+  <tr>
+    <td class="header-td" style="background:#3b5491;padding:18px 26px 14px;">
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:12px;">
+        <tr>
+          <td valign="middle">
+            <p style="margin:0 0 4px 0;font-size:19px;font-weight:bold;color:#ffffff;">🤖 리스크 탐지봇</p>
+            <p style="margin:0 0 3px 0;font-size:10px;color:#c8d8f0;text-align:right;">Claude Sonnet / Gemini 3.5-flash-lite</p>
+            <p style="margin:0;font-size:13px;color:#c8d8f0;">2026년 09월 10일 07:00 기준 (KST)</p>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:6px;">
+        <tr>
+          <td style="font-size:11px;color:#c8d8f0;">
+            수집 1287건 &nbsp;·&nbsp; <span style="color:#6ee7b7;font-weight:600;">5건 선별</span>
+          </td>
+          <td align="right" style="font-size:12px;white-space:nowrap;">
+            <span style="color:#ef4444;font-weight:700;">긴급 2</span>
+            <span style="color:#4a6099;margin:0 5px;">·</span>
+            <span style="color:#f59e0b;font-weight:700;">주의 2</span>
+            <span style="color:#4a6099;margin:0 5px;">·</span>
+            <span style="color:#94a3b8;font-weight:700;">참고 1</span>
+          </td>
+        </tr>
+        <tr><td colspan="2" style="padding-top:5px;font-size:11px;color:#c8d8f0;letter-spacing:0.2px;">💡 유통 대기업 회생 신청과 상장폐지 사유 2건이 동시 발생. 채권·주식 익스포저 우선 점검 필요.</td></tr>
+      </table>
+    </td>
+  </tr>
+
+  <tr><td><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#f0f5ff;border-bottom:1px solid #e2e8f0;">
+      <tr>
+        <td style="padding:14px 22px 4px 22px;">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td><span style="font-size:15px;font-weight:bold;color:#3b5491;">경쟁사 신용·대출 특이사항</span></td>
+              <td align="right"><span style="font-size:12px;color:#94a3b8;">2026-09-10 당일 기준</span></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td style="padding:6px 22px 14px 22px;">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+          <td width="100" valign="middle" style="padding:7px 4px;font-size:13px;font-weight:bold;color:#1e293b;border-bottom:1px solid #dce8ff;">A증권</td>
+          <td valign="middle" style="padding:7px 4px;font-size:13px;border-bottom:1px solid #dce8ff;">일부 종목 신용융자 담보비율 상향(140%→150%) 시행 안내</td>
+          <td align="right" valign="middle" style="padding:7px 4px;font-size:11px;color:#94a3b8;white-space:nowrap;border-bottom:1px solid #dce8ff;">09/09</td>
+        </tr><tr>
+          <td width="100" valign="middle" style="padding:7px 4px;font-size:13px;font-weight:bold;color:#1e293b;">B증권</td>
+          <td valign="middle" style="padding:7px 4px;font-size:13px;">듀오백 등 2종목 대용증권 지정 해제 및 신용거래 중지</td>
+          <td align="right" valign="middle" style="padding:7px 4px;font-size:11px;color:#94a3b8;white-space:nowrap;">09/09</td>
+        </tr>
+          </table>
+        </td>
+      </tr>
+    </table></td></tr>
+
+  <tr><td style="padding:0;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;border:1px solid #e2e8f0;border-top:3px solid #475569;">
+      <tr>
+        <td bgcolor="#1e293b" style="padding:10px 14px;background:#1e293b;">
+          <table width="100%" cellpadding="0" cellspacing="0" border="0">
+            <tr>
+              <td style="font-size:14px;font-weight:500;color:#f8fafc;white-space:nowrap;">📉 여신잔고 리스크 현황</td>
+              <td align="right" style="font-size:11px;padding-left:10px;white-space:nowrap;"><span style="color:#2563eb;">●</span><span style="color:#ffffff;font-weight:700;"> 뱅키스</span> &nbsp;<span style="color:#8b5e3c;">●</span><span style="color:#ffffff;font-weight:700;"> 영업점</span></td>
+            </tr>
+            <tr>
+              <td colspan="2" style="padding-top:3px;">
+                <span style="font-size:12px;color:#fbbf24;">⚠ 위험고객: 단일종목 여신잔고 1억원이상 · 담보유지비율 140%~150%</span>
+              </td>
+            </tr>
+            <tr>
+              <td colspan="2" class="loan-hdr-right" style="font-size:11px;color:#94a3b8;padding-top:2px;white-space:nowrap;">단일종목 여신잔고 1억↑ 종목 6개 · 09월 10일 기준</td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr><td bgcolor="#ffffff" style="background:#ffffff;">
+        <!--[if mso]><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr>
+          <td width="16%"><![endif]-->
+        <table cellpadding="0" cellspacing="0" border="0" class="price-alert-table" style="border-collapse:collapse;width:100%;">
+
+          <thead>
+            <tr bgcolor="#f8fafc" style="background:#f8fafc;border-bottom:1px solid #e2e8f0;">
+              <th style="padding:7px 3px;font-size:11px;color:#64748b;font-weight:500;text-align:center;">종목명</th>
+              <th style="padding:7px 3px;font-size:11px;color:#64748b;font-weight:500;text-align:center;">전체 여신</th>
+              <th style="padding:7px 3px;font-size:11px;color:#d97706;font-weight:600;text-align:center;">⚠ 위험고객</th>
+              <th style="padding:7px 3px;font-size:11px;color:#dc2626;font-weight:600;text-align:center;">최고 리스크</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="background:#fafcff;border-bottom:1px solid #f1f5f9;">
+              <td class="price-alert-td" style="padding:8px 3px;text-align:center;white-space:nowrap;">
+                <div style="font-size:13px;font-weight:600;color:#1e293b;">에코프로비엠</div>
+                <div style="font-size:10px;font-weight:700;color:#2563eb;margin-top:2px;">▼7.4%</div>
+              </td>
+              <td class="price-alert-td" style="padding:8px 3px;font-size:11px;font-weight:600;text-align:center;white-space:nowrap;"><div style="color:#2563eb;">● 1,420억 (3,180명)</div><div style="margin-top:3px;color:#8b5e3c;">● 980억 (720명)</div></td>
+              <td style="padding:8px 3px;font-size:11px;font-weight:600;text-align:center;white-space:nowrap;"><div style="color:#2563eb;">● 88억 (42명)</div><div style="margin-top:3px;color:#8b5e3c;">● 31억 (9명)</div></td>
+              <td style="padding:8px 3px;font-size:11px;font-weight:600;text-align:center;white-space:nowrap;"><div><span style="color:#2563eb;">●</span> <span style="color:#dc2626;font-weight:700;">141%</span> <span style="color:#64748b;font-weight:400;">(12억·홍*동)</span></div><div style="margin-top:3px;"><span style="color:#8b5e3c;">●</span> <span style="color:#dc2626;font-weight:700;">144%</span> <span style="color:#64748b;font-weight:400;">(14억·강*우)</span></div></td>
+            </tr>
+            <tr style="background:#ffffff;border-bottom:1px solid #f1f5f9;">
+              <td class="price-alert-td" style="padding:8px 3px;text-align:center;white-space:nowrap;">
+                <div style="font-size:13px;font-weight:600;color:#1e293b;">두산에너빌리티</div>
+                <div style="font-size:10px;font-weight:700;color:#2563eb;margin-top:2px;">▼5.1%</div>
+              </td>
+              <td class="price-alert-td" style="padding:8px 3px;font-size:11px;font-weight:600;text-align:center;white-space:nowrap;"><div style="color:#2563eb;">● 2,260억 (4,870명)</div><div style="margin-top:3px;color:#8b5e3c;">● 1,740억 (1,310명)</div></td>
+              <td style="padding:8px 3px;font-size:11px;font-weight:600;text-align:center;white-space:nowrap;"><div style="color:#2563eb;">● 64억 (31명)</div><div style="margin-top:3px;color:#8b5e3c;">● 26억 (7명)</div></td>
+              <td style="padding:8px 3px;font-size:11px;font-weight:600;text-align:center;white-space:nowrap;"><div><span style="color:#2563eb;">●</span> <span style="color:#dc2626;font-weight:700;">143%</span> <span style="color:#64748b;font-weight:400;">(9억·서*민)</span></div><div style="margin-top:3px;"><span style="color:#8b5e3c;">●</span> <span style="color:#dc2626;font-weight:700;">146%</span> <span style="color:#64748b;font-weight:400;">(11억·오*재)</span></div></td>
+            </tr>
+            <tr style="background:#fafcff;border-bottom:1px solid #f1f5f9;">
+              <td class="price-alert-td" style="padding:8px 3px;text-align:center;white-space:nowrap;">
+                <div style="font-size:13px;font-weight:600;color:#1e293b;">포스코퓨처엠</div>
+                <div style="font-size:10px;font-weight:700;color:#2563eb;margin-top:2px;">▼6.2%</div>
+              </td>
+              <td class="price-alert-td" style="padding:8px 3px;font-size:11px;font-weight:600;text-align:center;white-space:nowrap;"><div style="color:#2563eb;">● 760억 (1,890명)</div><div style="margin-top:3px;color:#8b5e3c;">● 540억 (460명)</div></td>
+              <td style="padding:8px 3px;font-size:11px;font-weight:600;text-align:center;white-space:nowrap;"><div style="color:#2563eb;">● 45억 (22명)</div><div style="margin-top:3px;color:#8b5e3c;">● 15억 (5명)</div></td>
+              <td style="padding:8px 3px;font-size:11px;font-weight:600;text-align:center;white-space:nowrap;"><div><span style="color:#2563eb;">●</span> <span style="color:#dc2626;font-weight:700;">142%</span> <span style="color:#64748b;font-weight:400;">(10억·임*수)</span></div><div style="margin-top:3px;"><span style="color:#8b5e3c;">●</span> <span style="color:#dc2626;font-weight:700;">145%</span> <span style="color:#64748b;font-weight:400;">(7억·신*호)</span></div></td>
+            </tr>
+            <tr style="background:#fff3cd;"><td colspan="4" style="padding:8px 10px;font-size:11px;color:#92400e;font-weight:600;border-top:1px solid #fde68a;">&#9888; 외 3개 종목 추가 탐지 — 담당자 즉시 확인 <span style="font-weight:400;color:#b45309;font-size:10px;">(한화오션, 셀트리온, 알테오젠)</span></td></tr>
+            <tr bgcolor="#fafafa" style="background:#fafafa;">
+              <td colspan="4" style="padding:7px 10px;font-size:12px;color:#94a3b8;border-top:1px solid #e2e8f0;">
+                가격·등락률 출처: 야후파이낸스 (15분 지연) &nbsp;·&nbsp; 당일 -3% 초과 하락 + 위험고객 보유 종목만 표시
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </td></tr>
+    </table></td></tr>
+
+  <tr><td style="padding:0;">
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;border-top:3px solid #3b5491;border-bottom:1px solid #e2e8f0;background:#f8fafc;">
+      <tr>
+        <td style="padding:10px 14px;">
+          <span style="font-size:16px;font-weight:700;color:#3b5491;">📰 리스크 뉴스</span>
+        </td>
+        <td align="right" style="padding:10px 14px;font-size:10px;color:#94a3b8;white-space:nowrap;">
+          긴급 2 &nbsp;·&nbsp; 주의 2 &nbsp;·&nbsp; 참고 1
+        </td>
+      </tr>
+    </table>
+  </td></tr>
+
+  <tr><td class="rows-td" style="padding:0 0 12px 0;">
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;border:1px solid #fecaca;border-bottom:none;background:#fafafa;border-top:4px solid #ef4444;border-left:6px solid #ef4444;">
+          <tr>
+            <td style="padding:10px 14px;">
+              <span style="font-size:16px;font-weight:bold;color:#dc2626;">긴급</span>
+              <span style="display:inline-block;width:20px;height:20px;line-height:20px;text-align:center;background:#ef4444;color:#fff;font-size:11px;font-weight:700;border-radius:50%;margin-left:6px;vertical-align:middle;">2</span>
+            </td>
+            <td align="right" class="grade-header-right" style="padding:10px 14px;white-space:nowrap;">
+              <span style="font-size:11px;background:#fee2e2;color:#c0392b;padding:2px 10px;border-radius:10px;font-weight:600;">확정된 손실·부실·제재 — 당일 내 확인·점검 필요</span>
+            </td>
+          </tr>
+        </table>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #fecaca;border-top:none;background:#ffffff;margin-bottom:0;">
+          <tr>
+            <td class="card-bg card-inner" bgcolor="#fff8f8" style="padding:12px 16px;background:#fff8f8;border-bottom:1px solid #f5c6c6;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;">
+                <tr>
+                  <td class="badge-wrap" style="word-break:keep-all;"><span style="font-size:10px;background:#e8f0fe;color:#3b5491;padding:2px 7px;border-radius:3px;margin-right:4px;margin-bottom:4px;font-weight:600;white-space:nowrap;display:inline-block;">기업회생</span><span style="font-size:10px;background:#f1f5f9;color:#4a6099;padding:2px 7px;border-radius:3px;font-weight:600;white-space:nowrap;display:inline-block;">홈플러스</span></td>
+                  <td align="right" valign="top" style="white-space:nowrap;padding-left:8px;"><div style="text-align:right;min-width:90px;"><div style="font-size:10px;color:#94a3b8;margin-bottom:2px;">리스크 점수</div><div style="font-size:14px;font-weight:700;color:#c0392b;margin-bottom:2px;">9.8<span style="font-size:9px;color:#94a3b8;font-weight:400;"> / 10</span></div><div style="font-size:9px;color:#c0392b;letter-spacing:1px;font-family:monospace;">█████████░</div></div></td>
+                </tr>
+              </table>
+              <a href="https://n.news.naver.com/demo" class="title-link" style="font-weight:700;font-size:16px;text-decoration:none;color:#1e293b;line-height:1.6;word-break:keep-all;display:block;">홈플러스, 기업회생절차 개시 신청…거래처 대금 지급 중단</a>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:5px 0 8px 0;">
+                <tr>
+                  <td style="font-size:13px;"><a href="https://n.news.naver.com/demo" style="color:#4a6099;text-decoration:none;font-weight:500;">↗ 기사 보기</a></td>
+                  <td align="right" style="font-size:12px;color:#94a3b8;">09/10 07:00</td>
+                </tr>
+              </table>
+              <p style="margin:0;font-size:11px;color:#94a3b8;line-height:1.6;word-break:keep-all;">서울회생법원에 기업회생절차 개시를 신청했다. 상거래 채권 지급이 중단됐다.</p>
+            </td>
+          </tr>
+          <tr><td bgcolor="#fff8f8" style="background:#fff8f8;border-top:1px solid #fecaca;padding:0;"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="action-td" bgcolor="#ffffff" style="padding:10px 16px;border-bottom:1px solid #fecaca;background:#ffffff;"><p style="margin:0 0 5px 0;font-size:11px;font-weight:bold;letter-spacing:0.3px;"><span style="background:#dc2626;color:#fff;padding:2px 6px;font-size:10px;margin-right:5px;border-radius:3px;">⚡ 대응방안</span></p><p style="margin:0;font-size:12px;color:#1e293b;line-height:1.6;font-weight:600;word-break:keep-all;">홈플러스 채권 보유 고객 평가손 즉시 산출 → 회생절차 개시 결정 전 상환순위·담보 여부 확인 후 컴플라이언스부 보고</p></td></tr><tr><td class="care-td" bgcolor="#f8fafc" style="padding:10px 16px;background:#f8fafc;border-top:1px solid #e2e8f0;"><p style="margin:0 0 5px 0;font-size:11px;font-weight:bold;letter-spacing:0.3px;"><span style="background:#2563eb;color:#fff;padding:2px 6px;font-size:10px;margin-right:5px;border-radius:3px;">✦ AI</span><span style="color:#334155;">고객케어 안내 추천 문구</span></p><p style="margin:0;font-size:12px;color:#334155;line-height:1.7;white-space:pre-line;word-break:keep-all;">[한국투자증권] 긴급 안내 보유하신 채권의 발행사가 기업회생절차 개시를 신청했습니다. 보유 수량 및 만기 조건을 즉시 확인하시기 바랍니다. 관련 공시는 KIND(kind.krx.co.kr)에서 확인하실 수 있습니다.</p></td></tr><tr><td style="padding:0;border-top:1px solid #e2e8f0;border-bottom:1px solid #fecaca;background:#ffffff;"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#ffffff;">
+      <tr><td class="exp-card-td" style="padding:14px 18px;">
+        <p style="margin:0 0 10px 0;"><span style="font-size:11px;font-weight:700;color:#1e293b;">보유 익스포저</span> <span style="font-weight:400;color:#94a3b8;font-size:11px;">기준일: 2026-09-10</span></p>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;"><tr><td style="width:80px;border-bottom:1px solid #e2e8f0;">&nbsp;</td><td style="padding-left:8px;border-bottom:1px solid #e2e8f0;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;table-layout:fixed;"><tr><td class="exp-name-td" width="100" style="border-bottom:1px solid #e2e8f0;">&nbsp;</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;padding:2px 6px 5px;font-size:10px;font-weight:700;color:#2563eb;border-bottom:1px solid #e2e8f0;white-space:nowrap;">뱅키스</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;padding:2px 6px 5px;font-size:10px;font-weight:700;color:#8b5e3c;border-bottom:1px solid #e2e8f0;white-space:nowrap;">영업점</td></tr></table></td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:4px;"><tr><td valign="top" style="padding-top:6px;width:80px;white-space:nowrap;"><span style="font-size:10px;background:#ede9fe;color:#5b21b6;padding:1px 5px;border-radius:2px;font-weight:700;">채권잔고</span></td><td style="padding-left:8px;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;table-layout:fixed;"><tr style="border-bottom:1px solid #f8fafc;"><td class="exp-name-td" width="100" style="font-size:12px;font-weight:700;color:#1e293b;padding:8px 6px 8px 0;white-space:nowrap;vertical-align:top;"><div style="max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">홈플러스</div></td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;font-size:12px;color:#1e293b;padding:8px 6px;white-space:nowrap;vertical-align:top;">318억 (1,240명)</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;font-size:12px;color:#1e293b;padding:8px 6px;white-space:nowrap;vertical-align:top;">262억 (880명)</td></tr></table></td></tr></table>
+      </td></tr>
+    </table></td></tr></table></td></tr>
+        </table>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #fecaca;border-top:none;background:#ffffff;margin-bottom:0;">
+          <tr>
+            <td class="card-bg card-inner" bgcolor="#fff8f8" style="padding:12px 16px;background:#fff8f8;border-bottom:1px solid #f5c6c6;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;">
+                <tr>
+                  <td class="badge-wrap" style="word-break:keep-all;"><span style="font-size:10px;background:#e8f0fe;color:#3b5491;padding:2px 7px;border-radius:3px;margin-right:4px;margin-bottom:4px;font-weight:600;white-space:nowrap;display:inline-block;">거래정지</span><span style="font-size:10px;background:#f1f5f9;color:#4a6099;padding:2px 7px;border-radius:3px;font-weight:600;white-space:nowrap;display:inline-block;">듀오백</span></td>
+                  <td align="right" valign="top" style="white-space:nowrap;padding-left:8px;"><div style="text-align:right;min-width:90px;"><div style="font-size:10px;color:#94a3b8;margin-bottom:2px;">리스크 점수</div><div style="font-size:14px;font-weight:700;color:#c0392b;margin-bottom:2px;">9.5<span style="font-size:9px;color:#94a3b8;font-weight:400;"> / 10</span></div><div style="font-size:9px;color:#c0392b;letter-spacing:1px;font-family:monospace;">█████████░</div></div></td>
+                </tr>
+              </table>
+              <a href="https://n.news.naver.com/demo" class="title-link" style="font-weight:700;font-size:16px;text-decoration:none;color:#1e293b;line-height:1.6;word-break:keep-all;display:block;">거래소, 듀오백 상장폐지 사유 발생…내일부터 주권매매거래 정지</a>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:5px 0 8px 0;">
+                <tr>
+                  <td style="font-size:13px;"><a href="https://n.news.naver.com/demo" style="color:#4a6099;text-decoration:none;font-weight:500;">↗ 기사 보기</a></td>
+                  <td align="right" style="font-size:12px;color:#94a3b8;">09/10 07:00</td>
+                </tr>
+              </table>
+              <p style="margin:0;font-size:11px;color:#94a3b8;line-height:1.6;word-break:keep-all;">감사의견 거절로 상장폐지 사유가 발생해 주권매매거래를 정지한다고 공시했다.</p>
+            </td>
+          </tr>
+          <tr><td bgcolor="#fff8f8" style="background:#fff8f8;border-top:1px solid #fecaca;padding:0;"><table width="100%" cellpadding="0" cellspacing="0" border="0"><tr><td class="action-td" bgcolor="#ffffff" style="padding:10px 16px;border-bottom:1px solid #fecaca;background:#ffffff;"><p style="margin:0 0 5px 0;font-size:11px;font-weight:bold;letter-spacing:0.3px;"><span style="background:#dc2626;color:#fff;padding:2px 6px;font-size:10px;margin-right:5px;border-radius:3px;">⚡ 대응방안</span></p><p style="margin:0;font-size:12px;color:#1e293b;line-height:1.6;font-weight:600;word-break:keep-all;">듀오백 보유 고객 평가손 즉시 산출 → 거래정지 개시 전 미체결 주문·대용증권 편입 여부 점검</p></td></tr><tr><td class="care-td" bgcolor="#f8fafc" style="padding:10px 16px;background:#f8fafc;border-top:1px solid #e2e8f0;"><p style="margin:0 0 5px 0;font-size:11px;font-weight:bold;letter-spacing:0.3px;"><span style="background:#2563eb;color:#fff;padding:2px 6px;font-size:10px;margin-right:5px;border-radius:3px;">✦ AI</span><span style="color:#334155;">고객케어 안내 추천 문구</span></p><p style="margin:0;font-size:12px;color:#334155;line-height:1.7;white-space:pre-line;word-break:keep-all;">[한국투자증권] 긴급 안내 보유 종목이 상장폐지 사유 발생으로 매매거래가 정지될 예정입니다. 보유 수량 및 주문 가능 상태를 즉시 확인하시기 바랍니다. 관련 공시는 KIND(kind.krx.co.kr)에서 확인하실 수 있습니다.</p></td></tr><tr><td style="padding:0;border-top:1px solid #e2e8f0;border-bottom:1px solid #fecaca;background:#ffffff;"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#ffffff;">
+      <tr><td class="exp-card-td" style="padding:14px 18px;">
+        <p style="margin:0 0 10px 0;"><span style="font-size:11px;font-weight:700;color:#1e293b;">보유 익스포저</span> <span style="font-weight:400;color:#94a3b8;font-size:11px;">기준일: 2026-09-10</span></p>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;"><tr><td style="width:80px;border-bottom:1px solid #e2e8f0;">&nbsp;</td><td style="padding-left:8px;border-bottom:1px solid #e2e8f0;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;table-layout:fixed;"><tr><td class="exp-name-td" width="100" style="border-bottom:1px solid #e2e8f0;">&nbsp;</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;padding:2px 6px 5px;font-size:10px;font-weight:700;color:#2563eb;border-bottom:1px solid #e2e8f0;white-space:nowrap;">뱅키스</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;padding:2px 6px 5px;font-size:10px;font-weight:700;color:#8b5e3c;border-bottom:1px solid #e2e8f0;white-space:nowrap;">영업점</td></tr></table></td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:4px;"><tr><td valign="top" style="padding-top:6px;width:80px;white-space:nowrap;"><span style="font-size:10px;background:#fee2e2;color:#c0392b;padding:1px 5px;border-radius:2px;font-weight:700;">주식잔고</span></td><td style="padding-left:8px;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;table-layout:fixed;"><tr style="border-bottom:1px solid #f8fafc;"><td class="exp-name-td" width="100" style="font-size:12px;font-weight:700;color:#1e293b;padding:8px 6px 8px 0;white-space:nowrap;vertical-align:top;"><div style="max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">듀오백</div></td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;font-size:12px;color:#1e293b;padding:8px 6px;white-space:nowrap;vertical-align:top;">74억 (2,130명)</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;font-size:12px;color:#1e293b;padding:8px 6px;white-space:nowrap;vertical-align:top;">26억 (410명)</td></tr></table></td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:4px 0;"><tr><td style="height:1px;background:#e2e8f0;font-size:0;line-height:0;">&nbsp;</td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:4px;"><tr><td valign="top" style="padding-top:6px;width:80px;white-space:nowrap;"><span style="font-size:10px;background:#fef3c7;color:#b45309;padding:1px 5px;border-radius:2px;font-weight:700;">여신잔고</span></td><td style="padding-left:8px;"><div style="font-size:13px;color:#94a3b8;line-height:1.7;">잔고 없음</div></td></tr></table>
+      </td></tr>
+    </table></td></tr></table></td></tr>
+        </table>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;border:1px solid #fde68a;border-bottom:none;background:#fafafa;border-top:1px solid #fde68a;border-left:4px solid #f59e0b;">
+          <tr>
+            <td style="padding:10px 14px;">
+              <span style="font-size:16px;font-weight:bold;color:#b45309;">주의</span>
+              <span style="display:inline-block;width:20px;height:20px;line-height:20px;text-align:center;background:#f59e0b;color:#fff;font-size:11px;font-weight:700;border-radius:50%;margin-left:6px;vertical-align:middle;">2</span>
+            </td>
+            <td align="right" class="grade-header-right" style="padding:10px 14px;white-space:nowrap;">
+              <span style="font-size:11px;color:#94a3b8;">손실·부실 가능성 — 주시 및 선제 점검 권고</span>
+            </td>
+          </tr>
+        </table>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #fde68a;border-top:none;background:#ffffff;margin-bottom:10px;">
+          <tr>
+            <td style="padding:12px 16px;border-bottom:1px solid #fde68a;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:6px;">
+                <tr>
+                  <td class="badge-wrap" style="word-break:keep-all;"><span style="display:inline-block;font-size:10px;color:#3b5491;background:#e8f0fe;padding:2px 7px;margin-right:4px;margin-bottom:6px;border-radius:3px;white-space:nowrap;">신용등급 강등</span><span style="display:inline-block;font-size:10px;color:#7a9abf;background:#f1f5f9;padding:2px 7px;margin-right:4px;margin-bottom:6px;border-radius:3px;white-space:nowrap;">중앙일보</span></td>
+                  <td align="right" valign="top" style="white-space:nowrap;padding-left:8px;"><div style="text-align:right;min-width:90px;"><div style="font-size:10px;color:#94a3b8;margin-bottom:2px;">리스크 점수</div><div style="font-size:14px;font-weight:700;color:#b45309;margin-bottom:2px;">6.3<span style="font-size:9px;color:#94a3b8;font-weight:400;"> / 10</span></div><div style="font-size:9px;color:#f59e0b;letter-spacing:1px;font-family:monospace;">██████░░░░</div></div></td>
+                </tr>
+              </table>
+              <a href="https://n.news.naver.com/demo" class="title-link caution-title" style="font-weight:bold;font-size:15px;text-decoration:none;color:#1e293b;line-height:1.6;word-break:keep-all;display:block;">중앙일보·JTBC 신용등급 BBB→CCC 강등…채무불이행 우려</a>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:4px 0 0 0;">
+                <tr>
+                  <td style="font-size:11px;"><a href="https://n.news.naver.com/demo" style="color:#4a6099;text-decoration:none;">↗ 기사 보기</a></td>
+                  <td align="right" style="font-size:12px;color:#94a3b8;">09/10 07:00</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr><td style="padding:10px 16px;background:#ffffff;border-top:1px solid #fde68a;border-bottom:1px solid #fde68a;"><p style="margin:0 0 5px 0;font-size:11px;font-weight:bold;letter-spacing:0.3px;"><span style="background:#dc2626;color:#fff;padding:2px 6px;font-size:10px;margin-right:5px;border-radius:3px;">⚡ 대응방안</span></p><p style="margin:0;font-size:13px;color:#1e293b;line-height:1.6;font-weight:500;word-break:keep-all;">중앙일보·JTBC 채권 보유 고객 만기별 잔존 익스포저 점검 → 차환 일정 확인 후 리테일 채권 판매 중단 검토</p></td></tr><tr><td style="padding:0;"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#ffffff;">
+      <tr><td class="exp-card-td" style="padding:14px 18px;">
+        <p style="margin:0 0 10px 0;"><span style="font-size:11px;font-weight:700;color:#1e293b;">보유 익스포저</span> <span style="font-weight:400;color:#94a3b8;font-size:11px;">기준일: 2026-09-10</span></p>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;"><tr><td style="width:80px;border-bottom:1px solid #e2e8f0;">&nbsp;</td><td style="padding-left:8px;border-bottom:1px solid #e2e8f0;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;table-layout:fixed;"><tr><td class="exp-name-td" width="100" style="border-bottom:1px solid #e2e8f0;">&nbsp;</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;padding:2px 6px 5px;font-size:10px;font-weight:700;color:#2563eb;border-bottom:1px solid #e2e8f0;white-space:nowrap;">뱅키스</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;padding:2px 6px 5px;font-size:10px;font-weight:700;color:#8b5e3c;border-bottom:1px solid #e2e8f0;white-space:nowrap;">영업점</td></tr></table></td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:4px;"><tr><td valign="top" style="padding-top:6px;width:80px;white-space:nowrap;"><span style="font-size:10px;background:#ede9fe;color:#5b21b6;padding:1px 5px;border-radius:2px;font-weight:700;">채권잔고</span></td><td style="padding-left:8px;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;table-layout:fixed;"><tr style="border-bottom:1px solid #f8fafc;"><td class="exp-name-td" width="100" style="font-size:12px;font-weight:700;color:#1e293b;padding:8px 6px 8px 0;white-space:nowrap;vertical-align:top;"><div style="max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">중앙일보</div></td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;font-size:12px;color:#1e293b;padding:8px 6px;white-space:nowrap;vertical-align:top;">206억 (730명)</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;font-size:12px;color:#1e293b;padding:8px 6px;white-space:nowrap;vertical-align:top;">141억 (520명)</td></tr></table><details style="margin-top:0;"><summary style="cursor:pointer;list-style:revert;padding:2px 0;font-size:11px;color:#94a3b8;">外 1개 종목 더보기</summary><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;table-layout:fixed;"><tr style="border-bottom:1px solid #f8fafc;"><td class="exp-name-td" width="100" style="font-size:12px;font-weight:700;color:#1e293b;padding:8px 6px 8px 0;white-space:nowrap;vertical-align:top;"><div style="max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">JTBC</div></td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;font-size:12px;color:#1e293b;padding:8px 6px;white-space:nowrap;vertical-align:top;">118억 (410명)</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;font-size:12px;color:#1e293b;padding:8px 6px;white-space:nowrap;vertical-align:top;">96억 (300명)</td></tr></table></details></td></tr></table>
+      </td></tr>
+    </table></td></tr>
+        </table>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="border:1px solid #fde68a;border-top:none;background:#ffffff;margin-bottom:10px;">
+          <tr>
+            <td style="padding:12px 16px;border-bottom:1px solid #fde68a;">
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:6px;">
+                <tr>
+                  <td class="badge-wrap" style="word-break:keep-all;"><span style="display:inline-block;font-size:10px;color:#3b5491;background:#e8f0fe;padding:2px 7px;margin-right:4px;margin-bottom:6px;border-radius:3px;white-space:nowrap;">상장폐지</span><span style="display:inline-block;font-size:10px;color:#7a9abf;background:#f1f5f9;padding:2px 7px;margin-right:4px;margin-bottom:6px;border-radius:3px;white-space:nowrap;">TIME 미국배당다우존스액티브</span></td>
+                  <td align="right" valign="top" style="white-space:nowrap;padding-left:8px;"><div style="text-align:right;min-width:90px;"><div style="font-size:10px;color:#94a3b8;margin-bottom:2px;">리스크 점수</div><div style="font-size:14px;font-weight:700;color:#b45309;margin-bottom:2px;">6.2<span style="font-size:9px;color:#94a3b8;font-weight:400;"> / 10</span></div><div style="font-size:9px;color:#f59e0b;letter-spacing:1px;font-family:monospace;">██████░░░░</div></div></td>
+                </tr>
+              </table>
+              <a href="https://n.news.naver.com/demo" class="title-link caution-title" style="font-weight:bold;font-size:15px;text-decoration:none;color:#1e293b;line-height:1.6;word-break:keep-all;display:block;">TIME 미국배당다우존스액티브 ETF, 상관계수 미달로 상장폐지 결정</a>
+              <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:4px 0 0 0;">
+                <tr>
+                  <td style="font-size:11px;"><a href="https://n.news.naver.com/demo" style="color:#4a6099;text-decoration:none;">↗ 기사 보기</a></td>
+                  <td align="right" style="font-size:12px;color:#94a3b8;">09/10 07:00</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr><td style="padding:10px 16px;background:#ffffff;border-top:1px solid #fde68a;border-bottom:1px solid #fde68a;"><p style="margin:0 0 5px 0;font-size:11px;font-weight:bold;letter-spacing:0.3px;"><span style="background:#dc2626;color:#fff;padding:2px 6px;font-size:10px;margin-right:5px;border-radius:3px;">⚡ 대응방안</span></p><p style="margin:0;font-size:13px;color:#1e293b;line-height:1.6;font-weight:500;word-break:keep-all;">TIME 미국배당다우존스액티브 보유 고객 대상 거래정지 일정 안내 → 순자산가치 상환 절차 사전 고지</p></td></tr><tr><td style="padding:0;"><table width="100%" cellpadding="0" cellspacing="0" border="0" style="background:#ffffff;">
+      <tr><td class="exp-card-td" style="padding:14px 18px;">
+        <p style="margin:0 0 10px 0;"><span style="font-size:11px;font-weight:700;color:#1e293b;">보유 익스포저</span> <span style="font-weight:400;color:#94a3b8;font-size:11px;">기준일: 2026-09-10</span></p>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:8px;"><tr><td style="width:80px;border-bottom:1px solid #e2e8f0;">&nbsp;</td><td style="padding-left:8px;border-bottom:1px solid #e2e8f0;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;table-layout:fixed;"><tr><td class="exp-name-td" width="100" style="border-bottom:1px solid #e2e8f0;">&nbsp;</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;padding:2px 6px 5px;font-size:10px;font-weight:700;color:#2563eb;border-bottom:1px solid #e2e8f0;white-space:nowrap;">뱅키스</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;padding:2px 6px 5px;font-size:10px;font-weight:700;color:#8b5e3c;border-bottom:1px solid #e2e8f0;white-space:nowrap;">영업점</td></tr></table></td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:4px;"><tr><td valign="top" style="padding-top:6px;width:80px;white-space:nowrap;"><span style="font-size:10px;background:#fee2e2;color:#c0392b;padding:1px 5px;border-radius:2px;font-weight:700;">주식잔고</span></td><td style="padding-left:8px;"><table cellpadding="0" cellspacing="0" border="0" style="border-collapse:collapse;table-layout:fixed;"><tr style="border-bottom:1px solid #f8fafc;"><td class="exp-name-td" width="100" style="font-size:12px;font-weight:700;color:#1e293b;padding:8px 6px 8px 0;white-space:nowrap;vertical-align:top;"><div style="max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">TIME 미국배당다우존스…</div></td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;font-size:12px;color:#1e293b;padding:8px 6px;white-space:nowrap;vertical-align:top;">47억 (765명)</td><td class="exp-val-td" width="205" align="center" style="box-sizing:border-box;text-align:center;font-size:12px;color:#1e293b;padding:8px 6px;white-space:nowrap;vertical-align:top;">7억 (114명)</td></tr></table></td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:4px 0;"><tr><td style="height:1px;background:#e2e8f0;font-size:0;line-height:0;">&nbsp;</td></tr></table><table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-bottom:4px;"><tr><td valign="top" style="padding-top:6px;width:80px;white-space:nowrap;"><span style="font-size:10px;background:#fef3c7;color:#b45309;padding:1px 5px;border-radius:2px;font-weight:700;">여신잔고</span></td><td style="padding-left:8px;"><div style="font-size:13px;color:#94a3b8;line-height:1.7;">잔고 없음</div></td></tr></table>
+      </td></tr>
+    </table></td></tr>
+        </table>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:14px;border:1px solid #e2e8f0;border-bottom:none;background:#f8fafc;border-top:1px solid #e2e8f0;border-left:4px solid #94a3b8;">
+          <tr>
+            <td style="padding:10px 14px;">
+              <span style="font-size:16px;font-weight:bold;color:#475569;">참고</span>
+              <span style="display:inline-block;width:20px;height:20px;line-height:20px;text-align:center;background:#94a3b8;color:#fff;font-size:11px;font-weight:700;border-radius:50%;margin-left:6px;vertical-align:middle;">1</span>
+            </td>
+            <td align="right" class="grade-header-right" style="padding:10px 14px;white-space:nowrap;">
+              <span style="font-size:11px;color:#94a3b8;">직접 손실 없는 동향 — 참고 파악용</span>
+            </td>
+          </tr>
+        </table>
+        <table width="100%" cellpadding="0" cellspacing="0" border="0" class="ref-bg" style="border:1px solid #e2e8f0;border-top:none;background:#f8fbff;">
+          <tr>
+            <td style="padding:6px 16px;font-size:13px;word-break:keep-all;color:#7a9abf;">
+              · <a href="https://n.news.naver.com/demo" style="color:#7a9abf;text-decoration:none;">위메이드 소액주주, &quot;새 최대주주 실체 불분명&quot; 금감원에 민원 제기</a>
+              <span style="font-size:10px;color:#94a3b8;margin-left:4px;">09/10 07:00</span>
+            </td>
+            <td align="right" valign="middle" style="padding:6px 16px 6px 4px;white-space:nowrap;"><div style="font-size:9px;color:#94a3b8;font-family:monospace;text-align:right;">1.7<br>█░░░░░░░░░</div></td>
+          </tr>
+        </table></td></tr>
+
+  <tr>
+    <td class="footer-td" style="padding:14px 22px;background:#fff;border-top:1px solid #e2e8f0;">
+      <p style="margin:0;font-size:13px;color:#94a3b8;line-height:2.0;">
+        본 이메일은 Claude, Gemini가 심층 분석·선별하여 발송합니다.
+      </p>
+      <table width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:12px;border-top:1px solid #e2e8f0;padding-top:10px;">
+        <tr>
+          <td style="font-size:12px;font-weight:700;color:#4a6099;padding-bottom:6px;" colspan="2">리스크 점수 기준 — 점수 구간이 곧 <b>등급</b>입니다</td>
+        </tr>
+        <tr>
+          <td style="font-size:11px;padding:2px 0;color:#c0392b;font-weight:600;width:80px;">7.0 ~ 10.0</td>
+          <td style="font-size:11px;padding:2px 0;color:#7a9abf;"><b>긴급</b> — 확정된 손실·부실·제재 · 당일 내 확인·점검 필요</td>
+        </tr>
+        <tr>
+          <td style="font-size:11px;padding:2px 0;color:#b7791f;font-weight:600;">5.0 ~ 7.0</td>
+          <td style="font-size:11px;padding:2px 0;color:#7a9abf;"><b>주의</b> — 손실·부실 가능성 · 주시 및 선제 점검 권고</td>
+        </tr>
+        <tr>
+          <td style="font-size:11px;padding:2px 0;color:#7a9abf;font-weight:600;">0 ~ 5.0</td>
+          <td style="font-size:11px;padding:2px 0;color:#7a9abf;"><b>참고</b> — 직접 손실 없는 동향 · 참고 파악용</td>
+        </tr>
+        <tr>
+          <td style="font-size:11px;padding:6px 0 0 0;color:#94a3b8;" colspan="2">점수는 등급 대역 안에서 AI 확신도·사건 키워드·익스포저 규모를 반영해 산출됩니다. 같은 등급 안에서 대응 순서를 정할 때 참고하세요 — 점수만으로 등급이 바뀌지는 않습니다.</td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+
+</table>
+</td></tr>
+</table>
+</body></html>
